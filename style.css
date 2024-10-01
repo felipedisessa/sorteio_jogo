@@ -12,6 +12,10 @@ body {
     align-items: center;
 }
 
+p {
+    font-size: 24px;
+}
+
 .race-container {
     background-color: rgba(255, 255, 255, 0.85); 
     padding: 30px;
@@ -93,7 +97,7 @@ button {
     display: block;
     margin: 20px auto;
     padding: 12px 24px;
-    font-size: 18px;
+    font-size: 36px;
     cursor: pointer;
     border: none;
     border-radius: 8px;
@@ -127,6 +131,6 @@ button:hover {
 
 #winner {
     color: green;
-    font-size: 24px;
+    font-size: 36px;
     margin-top: 20px;
 }
