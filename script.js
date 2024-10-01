@@ -8,6 +8,7 @@ const finishLine = document.querySelector('.track').offsetWidth - 100;
 const horses = Array.from(document.querySelectorAll('.horse')).map((horse, index) => ({
     element: horse,
     position: 0,
+    speed: Math.random() * 2 + 1, // Velocidade inicial dos cavalos
     number: index + 1
 }));
 
@@ -35,8 +36,17 @@ function resetPositions() {
 
 function race() {
     horses.forEach(horse => {
-        let speed = Math.random() * 5 + 1.5; 
-        horse.position += speed;
+        let randomFactor;
+        
+        // Mantém uma corrida mais equilibrada até o meio da pista
+        if (horse.position < finishLine * 0.5) {
+            randomFactor = Math.random() * 1; // Variação menor até 50% da corrida
+        } else {
+            randomFactor = Math.random() * 2; // Aumenta a variação após 50% da corrida
+        }
+
+
+        horse.position += horse.speed + randomFactor; // A posição de cada cavalo é alterada
         horse.element.style.left = `${horse.position}px`;
 
         // Verifica se o cavalo cruzou a linha de chegada e se ainda não há um vencedor
@@ -56,7 +66,6 @@ function announceWinner(horse) {
     raceInProgress = false;
     document.getElementById('winner').textContent = `O Cavalinho número ${horse.number} venceu!`;
     horse.element.style.transform = 'scale(1.2)';  // Aumenta o cavalo vencedor
-    horse.element.style.backgroundColor = '#FFD700';  // Muda a cor de fundo para dourado
     horse.element.classList.add('winner-animation');  // Adiciona a animação de vencedor
 }
 

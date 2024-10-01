@@ -16,6 +16,16 @@ p {
     font-size: 24px;
 }
 
+.finish-line {
+    position: absolute;
+    right: 100px; /* Posição da linha de chegada, ajusta com base na largura */
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background-color: red; /* Cor da linha de chegada */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
 .race-container {
     background-color: rgba(255, 255, 255, 0.85); 
     padding: 30px;
@@ -36,14 +46,23 @@ p {
     border-radius: 10px;
     box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra na pista */
 }
+/* Adiciona a animação de balanço */
+@keyframes swing {
+    0% {
+        transform: rotate(0deg); /* Posição inicial */
+    }
+    50% {
+        transform: rotate(5deg); /* Gira 5 graus para a direita */
+    }
+    100% {
+        transform: rotate(0deg); /* Volta para a posição inicial */
+    }
+}
 
 .horse {
-    font-size: 28px; 
     position: absolute;
     left: 0;
     width: 13%;
-    padding: 12px;
-    border: 2px solid black;
     transition: left 0.3s; 
     display: flex;
     align-items: center;
@@ -52,45 +71,37 @@ p {
     border-radius: 10px;
     box-sizing: border-box;
     font-weight: bold;
-    color: white; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    animation: swing 1s ease-in-out infinite; /* Adiciona a animação de balanço */
 }
+
+.horse img {
+    width: 70px; /* Ajuste o tamanho do cavalo aqui */
+    height: auto;
+}
+
 
 #horse1 {
     top: 10px;
-    background-color: #ff6b6b; 
 }
 
 #horse2 {
     top: 80px;
-    background-color: #4dabf5; 
 }
 
 #horse3 {
     top: 150px;
-    background-color: #81c784; 
 }
 
 #horse4 {
     top: 220px;
-    background-color: #ffca28; 
 }
 
 #horse5 {
     top: 290px;
-    background-color: #ba68c8; 
 }
 
 #horse6 {
     top: 360px;
-    background-color: #ff8a65;
-}
-
-
-.horse img {
-    width: 50px;
-    height: 50px;
-    margin-right: 8px;
 }
 
 button {
